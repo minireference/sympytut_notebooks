@@ -4,4 +4,4 @@
 
 ## Start
 
-Wath preview of the notebooks on [NBViewer](http://nbviewer.ipython.org/github/astrograzl/SymPyTut/blob/master/Intro.ipynb) on-line!
+Check preview of the notebooks on [NBViewer](http://nbviewer.ipython.org/github/astrograzl/SymPyTut/blob/master/Intro.ipynb)...
