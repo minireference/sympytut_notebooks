@@ -1,4 +1,3 @@
 Ivan Savov (initial .tex version from the `No bullshit guide to math and physics` appendix)
 Sandra Gordon (editor)
-Zdeněk Janák (iPython notebook conversion)
-
+Zdeněk Janák (IPython notebook conversion)
