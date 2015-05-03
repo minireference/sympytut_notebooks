@@ -6,6 +6,7 @@
 *.fls
 *.out
 *.toc
+*.pdf
 
 ## Intermediate documents:
 *.dvi
@@ -108,5 +109,10 @@ sympy-plots-for-*.tex/
 # xindy
 *.xdy
 
-# IPython
+## IPython
 .ipynb_checkpoints/
+
+## Sage cloud
+*.sage-chat
+*.sage-history
+*.syncdoc4
