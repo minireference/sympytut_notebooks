@@ -1,0 +1,1233 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Fundamentals-of-mathematics}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\def\PY@tok@gd{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\def\PY@tok@gu{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\def\PY@tok@gt{\def\PY@tc##1{\textcolor[rgb]{0.00,0.25,0.82}{##1}}}
+\def\PY@tok@gs{\let\PY@bf=\textbf}
+\def\PY@tok@gr{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\def\PY@tok@cm{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@vg{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@m{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@mh{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@go{\def\PY@tc##1{\textcolor[rgb]{0.50,0.50,0.50}{##1}}}
+\def\PY@tok@ge{\let\PY@it=\textit}
+\def\PY@tok@vc{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@il{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@cs{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@cp{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\def\PY@tok@gi{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\def\PY@tok@gh{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\def\PY@tok@ni{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\def\PY@tok@nl{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\def\PY@tok@nn{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@no{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\def\PY@tok@na{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\def\PY@tok@nb{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@nc{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@nd{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\def\PY@tok@ne{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\def\PY@tok@nf{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@si{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\def\PY@tok@s2{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@vi{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@nt{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@nv{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@s1{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sh{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sc{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sx{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@bp{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@c1{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@kc{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@c{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@mf{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@err{\def\PY@bc##1{\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{##1}}}
+\def\PY@tok@kd{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@ss{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@sr{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\def\PY@tok@mo{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@kn{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@mi{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@gp{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\def\PY@tok@o{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@kr{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@s{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@kp{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@w{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\def\PY@tok@kt{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\def\PY@tok@ow{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\def\PY@tok@sb{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@k{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@se{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\def\PY@tok@sd{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \subsection{Fundamentals of
+mathematics}\label{fundamentals-of-mathematics}
+
+    Let's begin by learning about the basic \texttt{SymPy} objects and the
+operations we can carry out on them. We'll learn the \texttt{SymPy}
+equivalents of many math verbs like ``to solve'' (an equation), ``to
+expand'' (an expression), ``to factor'' (a polynomial).
+
+    \subsubsection{Numbers}\label{numbers}
+
+    In \texttt{Python}, there are two types of number objects: \texttt{int}s
+and \texttt{float}s.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{l+m+mi}{3}         \PY{c}{# an int}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}2}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        3
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{l+m+mf}{3.0}       \PY{c}{# a float}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}3}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        3.0
+        $}\end{equation*}
+
+    
+
+    Integer objects in \texttt{Python} are a faithful representation of the
+set of integers $\mathbb{Z}=\{\ldots,-2,-1,0,1,2,\ldots\}$. Floating
+point numbers are approximate representations of the reals $\mathbb{R}$.
+Regardless of its absolute size, a floating point number is only
+accurate to 16 decimals.
+
+Special care is required when specifying rational numbers, because
+integer division might not produce the answer you want. In other words,
+Python will not automatically convert the answer to a floating point
+number, but instead round the answer to the closest integer:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{7}       \PY{c}{# int/int gives int}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}4}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        0.14285714285714285
+        $}\end{equation*}
+
+    
+
+    To avoid this problem, you can force \texttt{float} division by using
+the number \texttt{1.0} instead of \texttt{1}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{l+m+mf}{1.0}\PY{o}{/}\PY{l+m+mi}{7}     \PY{c}{# float/int gives float}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}5}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        0.14285714285714285
+        $}\end{equation*}
+
+    
+
+    This result is better, but it's still only an approximation of the exact
+number $\frac{1}{7} \in \mathbb{Q}$, since a \texttt{float} has 16
+decimals while the decimal expansion of $\frac{1}{7}$ is infinitely
+long. To obtain an \emph{exact} representation of $\frac{1}{7}$ you need
+to create a \texttt{SymPy} expression. You can sympify any expression
+using the shortcut function \texttt{S()}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{S}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{1/7}\PY{l+s}{'}\PY{p}{)}  \PY{c}{# = Rational(1,7)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}6}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{1}{7}
+        $}\end{equation*}
+
+    
+
+    Note the input to \texttt{S()} is specified as a text string delimited
+by quotes. We could have achieved the same result using
+\texttt{S('1')/7} since a \texttt{SymPy} object divided by an
+\texttt{int} is a \texttt{SymPy} object.
+
+Except for the tricky \texttt{Python} division operator, other math
+operators like addition \texttt{+}, subtraction \texttt{-}, and
+multiplication \texttt{*} work as you would expect. The syntax
+\texttt{**} is used in \texttt{Python} to denote exponentiation:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{l+m+mi}{2}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{10}     \PY{c}{# same as S('2\PYZca{}10')}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}7}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        1024
+        $}\end{equation*}
+
+    
+
+    When solving math problems, it's best to work with \texttt{SymPy}
+objects, and wait to compute the numeric answer in the end. To obtain a
+numeric approximation of a \texttt{SymPy} object as a \texttt{float},
+call its \texttt{.evalf()} method:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{pi}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}8}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \pi
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{pi}\PY{o}{.}\PY{n}{evalf}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}9}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        3.14159265358979
+        $}\end{equation*}
+
+    
+
+    The method \texttt{.n()} is equivalent to \texttt{.evalf()}. The global
+\texttt{SymPy} function \texttt{N()} can also be used to to compute
+numerical values. You can easily change the number of digits of
+precision of the approximation. Enter \texttt{pi.n(400)} to obtain an
+approximation of $\pi$ to 400 decimals.
+
+    \subsubsection{Symbols}\label{symbols}
+
+    Python is a civilized language so there's no need to define variables
+before assigning values to them. When you write \texttt{a = 3}, you
+define a new name \texttt{a} and set it to the value \texttt{3}. You can
+now use the name \texttt{a} in subsequent calculations.
+
+Most interesting \texttt{SymPy} calculations require us to define
+\texttt{symbols}, which are the \texttt{SymPy} objects for representing
+variables and unknowns. For your convenience, when
+\href{http://live.sympy.org}{live.sympy.org} starts, it runs the
+following commands automatically:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k+kn}{from} \PY{n+nn}{\PYZus{}\PYZus{}future\PYZus{}\PYZus{}} \PY{k}{import} \PY{n}{division}
+         \PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k}{import} \PY{o}{*}
+         \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{z}\PY{p}{,} \PY{n}{t} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{x y z t}\PY{l+s}{'}\PY{p}{)}
+         \PY{n}{k}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{n} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{k m n}\PY{l+s}{'}\PY{p}{,} \PY{n}{integer}\PY{o}{=}\PY{k}{True}\PY{p}{)}
+         \PY{n}{f}\PY{p}{,} \PY{n}{g}\PY{p}{,} \PY{n}{h} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{f g h}\PY{l+s}{'}\PY{p}{,} \PY{n}{cls}\PY{o}{=}\PY{n}{Function}\PY{p}{)}
+\end{Verbatim}
+
+    The first statement instructs python to convert \texttt{1/7} to
+\texttt{1.0/7} when dividing, potentially saving you from any int
+division confusion. The second statement imports all the \texttt{SymPy}
+functions. The remaining statements define some generic symbols
+\texttt{x}, \texttt{y}, \texttt{z}, and \texttt{t}, and several other
+symbols with special properties.
+
+Note the difference between the following two statements:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{x} \PY{o}{+} \PY{l+m+mi}{2}            \PY{c}{# an Add expression}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}11}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        x + 2
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{p} \PY{o}{+} \PY{l+m+mi}{2}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+    NameError                                 Traceback (most recent call last)
+
+        <ipython-input-12-d62eaef0cf31> in <module>()
+    ----> 1 p + 2
+    
+
+        NameError: name 'p' is not defined
+
+    \end{Verbatim}
+
+    The name \texttt{x} is defined as a symbol, so \texttt{SymPy} knows that
+\texttt{x + 2} is an expression; but the variable \texttt{p} is not
+defined, so \texttt{SymPy} doesn't know what to make of \texttt{p + 2}.
+To use \texttt{p} in expressions, you must first define it as a symbol:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{p} \PY{o}{=} \PY{n}{Symbol}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{p}\PY{l+s}{'}\PY{p}{)}  \PY{c}{# the same as p = symbols('p')}
+         \PY{n}{p} \PY{o}{+} \PY{l+m+mi}{2}            \PY{c}{# = Add(Symbol('p'), Integer(2))}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}13}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        p + 2
+        $}\end{equation*}
+
+    
+
+    You can define a sequence of variables using the following notation:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{a0}\PY{p}{,} \PY{n}{a1}\PY{p}{,} \PY{n}{a2}\PY{p}{,} \PY{n}{a3} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{a0:4}\PY{l+s}{'}\PY{p}{)}
+\end{Verbatim}
+
+    You can use any name you want for a variable, but it's best if you avoid
+the letters \texttt{Q,C,O,S,I,N} and \texttt{E} because they have
+special uses in \texttt{SymPy}: \texttt{I} is the unit imaginary number
+$i \equiv \sqrt(-1)$, \texttt{E} is the base of the natural logarithm,
+\texttt{S()} is the sympify function, \texttt{N()} is used to obtain
+numeric approximations, and \texttt{O} is used for big-O notation.
+
+The underscore symbol \texttt{\_} is a special variable that contains
+the result of the last printed value. The variable \texttt{\_} is
+analogous to the \texttt{ans} button on certain calculators, and is
+useful in multi-step calculations:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{l+m+mi}{3}\PY{o}{+}\PY{l+m+mi}{3}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}15}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        6
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{\PYZus{}}\PY{o}{*}\PY{l+m+mi}{2}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}16}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        12
+        $}\end{equation*}
+
+    
+
+    \subsubsection{Expresions}\label{expresions}
+
+    You define \texttt{SymPy} expressions by combining symbols with basic
+math operations and other functions:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{expr} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{x} \PY{o}{+} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{x} \PY{o}{-} \PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)} \PY{o}{-} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{x} \PY{o}{+} \PY{l+m+mi}{42}
+         \PY{n}{simplify}\PY{p}{(}\PY{n}{expr}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}17}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        2 x - \sin{\left (x \right )} + 42
+        $}\end{equation*}
+
+    
+
+    The function \texttt{simplify} can be used on any expression to simplify
+it. The examples below illustrate other useful \texttt{SymPy} functions
+that correspond to common mathematical operations on expressions:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{factor}\PY{p}{(} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{-}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{x}\PY{o}{-}\PY{l+m+mi}{8} \PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}18}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left(x - 4\right) \left(x + 2\right)
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{expand}\PY{p}{(} \PY{p}{(}\PY{n}{x}\PY{o}{-}\PY{l+m+mi}{4}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{x}\PY{o}{+}\PY{l+m+mi}{2}\PY{p}{)} \PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}19}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        x^{2} - 2 x - 8
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{a}\PY{p}{,} \PY{n}{b} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{a b}\PY{l+s}{'}\PY{p}{)}
+         \PY{n}{collect}\PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{x}\PY{o}{*}\PY{n}{b} \PY{o}{+} \PY{n}{a}\PY{o}{*}\PY{n}{x} \PY{o}{+} \PY{n}{a}\PY{o}{*}\PY{n}{b}\PY{p}{,} \PY{n}{x}\PY{p}{)}  \PY{c}{# collect terms for diff. pows of x}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}20}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        a b + x^{2} + x \left(a + b\right)
+        $}\end{equation*}
+
+    
+
+    To substitute a given value into an expression, call the
+\texttt{.subs()} method, passing in a python dictionary object
+\texttt{\{ key:val, ... \}} with the symbol--value substitutions you
+want to make:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{expr} \PY{o}{=} \PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)} \PY{o}{+} \PY{n}{cos}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+         \PY{n}{expr}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}21}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \sin{\left (x \right )} + \cos{\left (y \right )}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{expr}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{p}{\PYZob{}}\PY{n}{x}\PY{p}{:}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{y}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}22}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \cos{\left (2 \right )} + \sin{\left (1 \right )}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{expr}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{p}{\PYZob{}}\PY{n}{x}\PY{p}{:}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{y}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{o}{.}\PY{n}{n}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}23}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        0.425324148260754
+        $}\end{equation*}
+
+    
+
+    Note how we used \texttt{.n()} to obtain the expression's numeric value.
+
+    \subsubsection{Solving equations}\label{solving-equations}
+
+    The function \texttt{solve} is the main workhorse in \texttt{SymPy}.
+This incredibly powerful function knows how to solve all kinds of
+equations. In fact \texttt{solve} can solve pretty much any equation!
+When high school students learn about this function, they get really
+angry---why did they spend five years of their life learning to solve
+various equations by hand, when all along there was this \texttt{solve}
+thing that could do all the math for them? Don't worry, learning math is
+never a waste of time.
+
+The function \texttt{solve} takes two arguments. Use
+\texttt{solve(expr,var)} to solve the equation \texttt{expr==0} for the
+variable \texttt{var}. You can rewrite any equation in the form
+\texttt{expr==0} by moving all the terms to one side of the equation;
+the solutions to $A(x) = B(x)$ are the same as the solutions to
+$A(x) - B(x) = 0$.
+
+For example, to solve the quadratic equation $x^2 + 2x - 8 = 0$, use
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{solve}\PY{p}{(} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{x} \PY{o}{-} \PY{l+m+mi}{8}\PY{p}{,} \PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}24}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left [ -4, \quad 2\right ]
+        $}\end{equation*}
+
+    
+
+    In this case the equation has two solutions so \texttt{solve} returns a
+list. Check that $x = 2$ and $x = -4$ satisfy the equation
+$x^2 + 2x - 8 = 0$.
+
+The best part about \texttt{solve} and \texttt{SymPy} is that you can
+obtain symbolic answers when solving equations. Instead of solving one
+specific quadratic equation, we can solve all possible equations of the
+form $ax^2 + bx + c = 0$ using the following steps:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{c} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{a b c}\PY{l+s}{'}\PY{p}{)}
+         \PY{n}{solve}\PY{p}{(} \PY{n}{a}\PY{o}{*}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{b}\PY{o}{*}\PY{n}{x} \PY{o}{+} \PY{n}{c}\PY{p}{,} \PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}25}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left [ \frac{1}{2 a} \left(- b + \sqrt{- 4 a c + b^{2}}\right), \quad - \frac{1}{2 a} \left(b + \sqrt{- 4 a c + b^{2}}\right)\right ]
+        $}\end{equation*}
+
+    
+
+    In this case \texttt{solve} calculated the solution in terms of the
+symbols \texttt{a}, \texttt{b}, and \texttt{c}. You should be able to
+recognize the expressions in the solution---it's the quadratic formula
+$x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$.
+
+To solve a specific equation like $x^2 + 2x - 8 = 0$, we can substitute
+the coefficients $a = 1$, $b = 2$, and $c = -8$ into the general
+solution to obtain the same result:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{gen\PYZus{}sol} \PY{o}{=} \PY{n}{solve}\PY{p}{(} \PY{n}{a}\PY{o}{*}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{b}\PY{o}{*}\PY{n}{x} \PY{o}{+} \PY{n}{c}\PY{p}{,} \PY{n}{x}\PY{p}{)}
+         \PY{p}{[} \PY{n}{gen\PYZus{}sol}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{'}\PY{l+s}{a}\PY{l+s}{'}\PY{p}{:}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+s}{'}\PY{l+s}{b}\PY{l+s}{'}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+s}{'}\PY{l+s}{c}\PY{l+s}{'}\PY{p}{:}\PY{o}{-}\PY{l+m+mi}{8}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{p}{,}
+           \PY{n}{gen\PYZus{}sol}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{'}\PY{l+s}{a}\PY{l+s}{'}\PY{p}{:}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+s}{'}\PY{l+s}{b}\PY{l+s}{'}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+s}{'}\PY{l+s}{c}\PY{l+s}{'}\PY{p}{:}\PY{o}{-}\PY{l+m+mi}{8}\PY{p}{\PYZcb{}}\PY{p}{)} \PY{p}{]}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}26}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left [ 2, \quad -4\right ]
+        $}\end{equation*}
+
+    
+
+    To solve a \emph{system of equations}, you can feed \texttt{solve} with
+the list of equations as the first argument, and specify the list of
+unknowns you want to solve for as the second argument. For example, to
+solve for $x$ and $y$ in the system of equations $x + y = 3$ and
+$3x - 2y = 0$, use
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{solve}\PY{p}{(}\PY{p}{[}\PY{n}{x} \PY{o}{+} \PY{n}{y} \PY{o}{-} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{x} \PY{o}{-} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{y}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}27}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left \{ x : \frac{6}{5}, \quad y : \frac{9}{5}\right \}
+        $}\end{equation*}
+
+    
+
+    The function \texttt{solve} is like a Swiss Army knife you can use to
+solve all kind of problems. Suppose you want to \emph{complete the
+square} in the expression $x^2 - 4x + 7$, that is, you want to find
+constants $h$ and $k$ such that $x^2 -4x + 7 = (x-h)^2 + k$. There is no
+special ``complete the square'' function in \texttt{SymPy}, but you can
+call solve on the equation $(x - h)^2 + k - (x^2 - 4x + 7) = 0$ to find
+the unknowns $h$ and $k$:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{h}\PY{p}{,} \PY{n}{k} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{h k}\PY{l+s}{'}\PY{p}{)}
+         \PY{n}{solve}\PY{p}{(} \PY{p}{(}\PY{n}{x}\PY{o}{-}\PY{n}{h}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{k} \PY{o}{-} \PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{-}\PY{l+m+mi}{4}\PY{o}{*}\PY{n}{x}\PY{o}{+}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{[}\PY{n}{h}\PY{p}{,}\PY{n}{k}\PY{p}{]} \PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}28}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left [ \left ( 2, \quad 3\right )\right ]
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{p}{(}\PY{p}{(}\PY{n}{x}\PY{o}{-}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{+}\PY{l+m+mi}{3}\PY{p}{)}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}  \PY{c}{# so h = 2 and k = 3, verify...}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}29}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        x^{2} - 4 x + 7
+        $}\end{equation*}
+
+    
+
+    Learn the basic \texttt{SymPy} commands and you'll never need to suffer
+another tedious arithmetic calculation painstakingly performed by hand
+again!
+
+    \subsubsection{Rational functions}\label{rational-functions}
+
+    By default, \texttt{SymPy} will not combine or split rational
+expressions. You need to use \texttt{together} to symbolically calculate
+the addition of fractions:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{d} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{a b c d}\PY{l+s}{'}\PY{p}{)}
+         \PY{n}{a}\PY{o}{/}\PY{n}{b} \PY{o}{+} \PY{n}{c}\PY{o}{/}\PY{n}{d}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}30}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{a}{b} + \frac{c}{d}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{n}{together}\PY{p}{(}\PY{n}{a}\PY{o}{/}\PY{n}{b} \PY{o}{+} \PY{n}{c}\PY{o}{/}\PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}31}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{1}{b d} \left(a d + b c\right)
+        $}\end{equation*}
+
+    
+
+    Alternately, if you have a rational expression and want to divide the
+numerator by the denominator, use the \texttt{apart} function:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{apart}\PY{p}{(} \PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{+}\PY{n}{x}\PY{o}{+}\PY{l+m+mi}{4}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{x}\PY{o}{+}\PY{l+m+mi}{2}\PY{p}{)} \PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}32}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        x - 1 + \frac{6}{x + 2}
+        $}\end{equation*}
+
+    
+
+    \subsubsection{Exponentials and
+logarithms}\label{exponentials-and-logarithms}
+
+    Euler's constant $e = 2.71828\dots$ is defined one of several ways,
+
+\[
+e \equiv \lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n
+  \equiv \lim_{\epsilon\to 0}(1+\epsilon)^{1/\epsilon}
+  \equiv \sum_{n=0}^{\infty}\frac{1}{n!},
+\]
+
+and is denoted \texttt{E} in \texttt{SymPy}. Using \texttt{exp(x)} is
+equivalent to \texttt{E**x}.
+
+The functions \texttt{log} and \texttt{ln} both compute the logarithm
+base $e$:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{n}{log}\PY{p}{(}\PY{n}{E}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{)}  \PY{c}{# same as ln(E**3)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}33}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        3
+        $}\end{equation*}
+
+    
+
+    By default, \texttt{SymPy} assumes the inputs to functions like
+\texttt{exp} and \texttt{log} are complex numbers, so it will not expand
+certain logarithmic expressions. However, indicating to \texttt{SymPy}
+that the inputs are positive real numbers will make the expansions work:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{x y}\PY{l+s}{'}\PY{p}{)}
+         \PY{n}{log}\PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{n}{y}\PY{p}{)}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}34}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \log{\left (x y \right )}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{a}\PY{p}{,} \PY{n}{b} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{a b}\PY{l+s}{'}\PY{p}{,} \PY{n}{positive}\PY{o}{=}\PY{k}{True}\PY{p}{)}
+         \PY{n}{log}\PY{p}{(}\PY{n}{a}\PY{o}{*}\PY{n}{b}\PY{p}{)}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}35}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \log{\left (a \right )} + \log{\left (b \right )}
+        $}\end{equation*}
+
+    
+
+    \subsubsection{Polynomials}\label{polynomials}
+
+    Let's define a polynomial $P$ with roots at $x = 1$, $x = 2$, and
+$x = 3$:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{n}{P} \PY{o}{=} \PY{p}{(}\PY{n}{x}\PY{o}{-}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{x}\PY{o}{-}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{x}\PY{o}{-}\PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{P}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}36}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left(x - 3\right) \left(x - 2\right) \left(x - 1\right)
+        $}\end{equation*}
+
+    
+
+    To see the expanded version of the polynomial, call its \texttt{expand}
+method:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{n}{P}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}37}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        x^{3} - 6 x^{2} + 11 x - 6
+        $}\end{equation*}
+
+    
+
+    When the polynomial is expressed in it's expanded form
+$P(x) = x^3 - 6x^2 + 11x - 6$, we can't immediately identify its roots.
+This is why the factored form $P(x) = (x - 1)(x - 2)(x - 3)$ is
+preferable. To factor a polynomial, call its \texttt{factor} method or
+simplify it:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{n}{P}\PY{o}{.}\PY{n}{factor}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}38}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left(x - 3\right) \left(x - 2\right) \left(x - 1\right)
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{n}{P}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}39}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left(x - 3\right) \left(x - 2\right) \left(x - 1\right)
+        $}\end{equation*}
+
+    
+
+    Recall that the roots of the polynomial $P(x)$ are defined as the
+solutions to the equation $P(x) = 0$. We can use the \texttt{solve}
+function to find the roots of the polynomial:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{n}{roots} \PY{o}{=} \PY{n}{solve}\PY{p}{(}\PY{n}{P}\PY{p}{,}\PY{n}{x}\PY{p}{)}
+         \PY{n}{roots}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}40}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left [ 1, \quad 2, \quad 3\right ]
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{c}{# let's check if P equals (x-1)(x-2)(x-3)}
+         \PY{n}{simplify}\PY{p}{(} \PY{n}{P} \PY{o}{-} \PY{p}{(}\PY{n}{x}\PY{o}{-}\PY{n}{roots}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{x}\PY{o}{-}\PY{n}{roots}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{x}\PY{o}{-}\PY{n}{roots}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)} \PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}41}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        0
+        $}\end{equation*}
+
+    
+
+    \subsubsection{Equality checking}\label{equality-checking}
+
+    In the last example, we used the \texttt{simplify} function to check
+whether two expressions were equal. This way of checking equality works
+because $P = Q$ if and only if $P - Q = 0$. This is the best way to
+check if two expressions are equal in \texttt{SymPy} because it attempts
+all possible simplifications when comparing the expressions. Below is a
+list of other ways to check whether two quantities are equal with
+example cases where they fail:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{n}{p} \PY{o}{=} \PY{p}{(}\PY{n}{x}\PY{o}{-}\PY{l+m+mi}{5}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{x}\PY{o}{+}\PY{l+m+mi}{5}\PY{p}{)}
+         \PY{n}{q} \PY{o}{=} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{-} \PY{l+m+mi}{25}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}43}]:} \PY{n}{p} \PY{o}{==} \PY{n}{q}                      \PY{c}{# fail}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}43}]:} False
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}44}]:} \PY{n}{p} \PY{o}{-} \PY{n}{q} \PY{o}{==} \PY{l+m+mi}{0}                  \PY{c}{# fail}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}44}]:} False
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{n}{simplify}\PY{p}{(}\PY{n}{p} \PY{o}{-} \PY{n}{q}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{0}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}45}]:} True
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}46}]:} \PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{cos}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{==} \PY{l+m+mi}{1}  \PY{c}{# fail}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}46}]:} False
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{n}{simplify}\PY{p}{(} \PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{cos}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{-} \PY{l+m+mi}{1}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{0}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}47}]:} True
+\end{Verbatim}
+        
+    \subsubsection{Trigonometry}\label{trigonometry}
+
+    The trigonometric functions \texttt{sin} and \texttt{cos} take inputs in
+radians:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}48}]:} \PY{n}{sin}\PY{p}{(}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{6}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}48}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{1}{2}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{n}{cos}\PY{p}{(}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{6}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}49}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{\sqrt{3}}{2}
+        $}\end{equation*}
+
+    
+
+    For angles in degrees, you need a conversion factor of
+$\frac{\pi}{180}${[}rad/$^\circ${]}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}50}]:} \PY{n}{sin}\PY{p}{(}\PY{l+m+mi}{30}\PY{o}{*}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{180}\PY{p}{)}  \PY{c}{# 30 deg = pi/6 rads}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}50}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{1}{2}
+        $}\end{equation*}
+
+    
+
+    The inverse trigonometric functions $\sin^{-1}(x) \equiv \arcsin(x)$ and
+$\cos^{-1}(x) \equiv \arccos(x)$ are used as follows:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}51}]:} \PY{n}{asin}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}51}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        0.523598775598299
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}52}]:} \PY{n}{acos}\PY{p}{(}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}52}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{\pi}{6}
+        $}\end{equation*}
+
+    
+
+    Recall that $\tan(x) \equiv \frac{\sin(x)}{\cos(x)}$. The inverse
+function of $\tan(x)$ is $\tan^{-1}(x) \equiv \arctan(x) \equiv$
+\texttt{atan(x)}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}53}]:} \PY{n}{tan}\PY{p}{(}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{6}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}53}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{\sqrt{3}}{3}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}54}]:} \PY{n}{atan}\PY{p}{(} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)} \PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}54}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{\pi}{6}
+        $}\end{equation*}
+
+    
+
+    The function \texttt{acos} returns angles in the range $[0, \pi]$, while
+\texttt{asin} and \texttt{atan} return angles in the range
+$[-\frac{\pi}{2},\frac{\pi}{2}]$.
+
+Here are some trigonometric identities that \texttt{SymPy} knows:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}55}]:} \PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)} \PY{o}{==} \PY{n}{cos}\PY{p}{(}\PY{n}{x} \PY{o}{-} \PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}55}]:} True
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}56}]:} \PY{n}{simplify}\PY{p}{(} \PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{n}{cos}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{o}{+}\PY{n}{cos}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{n}{sin}\PY{p}{(}\PY{n}{y}\PY{p}{)} \PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}56}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \sin{\left (x + y \right )}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}57}]:} \PY{n}{e} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{cos}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+         \PY{n}{trigsimp}\PY{p}{(}\PY{n}{e}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}57}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        2
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}58}]:} \PY{n}{trigsimp}\PY{p}{(}\PY{n}{log}\PY{p}{(}\PY{n}{e}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}58}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \log{\left (2 \right )}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}59}]:} \PY{n}{trigsimp}\PY{p}{(}\PY{n}{log}\PY{p}{(}\PY{n}{e}\PY{p}{)}\PY{p}{,} \PY{n}{deep}\PY{o}{=}\PY{k}{True}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}59}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \log{\left (2 \right )}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}60}]:} \PY{n}{simplify}\PY{p}{(}\PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{4} \PY{o}{-} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{cos}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{cos}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{4}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}60}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{1}{2} \cos{\left (4 x \right )} + \frac{1}{2}
+        $}\end{equation*}
+
+    
+
+    The function \texttt{trigsimp} does essentially the same job as
+\texttt{simplify}.
+
+If instead of simplifying you want to expand a trig expression, you
+should use \texttt{expand\_trig}, because the default \texttt{expand}
+won't touch trig functions:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}61}]:} \PY{n}{expand}\PY{p}{(}\PY{n}{sin}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{x}\PY{p}{)}\PY{p}{)}       \PY{c}{# = (sin(2*x)).expand()}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}61}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \sin{\left (2 x \right )}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}62}]:} \PY{n}{expand\PYZus{}trig}\PY{p}{(}\PY{n}{sin}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{x}\PY{p}{)}\PY{p}{)}  \PY{c}{# = (sin(2*x)).expand(trig=True)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}62}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        2 \sin{\left (x \right )} \cos{\left (x \right )}
+        $}\end{equation*}
+
+    
+
+    \subsubsection{Hyperbolic trigonometric
+functions}\label{hyperbolic-trigonometric-functions}
+
+    The hyperbolic sine and cosine in \texttt{SymPy} are denoted
+\texttt{sinh} and \texttt{cosh} respectively and \texttt{SymPy} is smart
+enough to recognize them when simplifying expressions:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}63}]:} \PY{n}{simplify}\PY{p}{(} \PY{p}{(}\PY{n}{exp}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{+}\PY{n}{exp}\PY{p}{(}\PY{o}{-}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2} \PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}63}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \cosh{\left (x \right )}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}64}]:} \PY{n}{simplify}\PY{p}{(} \PY{p}{(}\PY{n}{exp}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{-}\PY{n}{exp}\PY{p}{(}\PY{o}{-}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2} \PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}64}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \sinh{\left (x \right )}
+        $}\end{equation*}
+
+    
+
+    Recall that $x = \cosh(\mu)$ and $y = \sinh(\mu)$ are defined as $x$ and
+$y$ coordinates of a point on the the hyperbola with equation
+$x^2 - y^2 = 1$ and therefore satisfy the identity
+$\cosh^2 x - \sinh^2 x = 1$:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}65}]:} \PY{n}{simplify}\PY{p}{(} \PY{n}{cosh}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{-} \PY{n}{sinh}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}65}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        1
+        $}\end{equation*}
+
+    
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

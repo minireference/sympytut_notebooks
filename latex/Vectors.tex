@@ -1,0 +1,570 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Vectors}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\def\PY@tok@gd{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\def\PY@tok@gu{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\def\PY@tok@gt{\def\PY@tc##1{\textcolor[rgb]{0.00,0.25,0.82}{##1}}}
+\def\PY@tok@gs{\let\PY@bf=\textbf}
+\def\PY@tok@gr{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\def\PY@tok@cm{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@vg{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@m{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@mh{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@go{\def\PY@tc##1{\textcolor[rgb]{0.50,0.50,0.50}{##1}}}
+\def\PY@tok@ge{\let\PY@it=\textit}
+\def\PY@tok@vc{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@il{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@cs{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@cp{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\def\PY@tok@gi{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\def\PY@tok@gh{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\def\PY@tok@ni{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\def\PY@tok@nl{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\def\PY@tok@nn{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@no{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\def\PY@tok@na{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\def\PY@tok@nb{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@nc{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@nd{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\def\PY@tok@ne{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\def\PY@tok@nf{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@si{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\def\PY@tok@s2{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@vi{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@nt{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@nv{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@s1{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sh{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sc{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sx{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@bp{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@c1{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@kc{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@c{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@mf{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@err{\def\PY@bc##1{\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{##1}}}
+\def\PY@tok@kd{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@ss{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@sr{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\def\PY@tok@mo{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@kn{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@mi{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@gp{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\def\PY@tok@o{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@kr{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@s{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@kp{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@w{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\def\PY@tok@kt{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\def\PY@tok@ow{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\def\PY@tok@sb{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@k{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@se{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\def\PY@tok@sd{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \subsection{Vectors}\label{vectors}
+
+    A vector $\vec{v} \in \mathbb{R}^n$ is an $n$-tuple of real numbers. For
+example, consider a vector that has three components:
+
+\[
+ \vec{v} = (v_1,v_2,v_3) \  \in \  (\mathbb{R},\mathbb{R},\mathbb{R}) \equiv \mathbb{R}^3.
+\]
+
+To specify the vector $\vec{v}$, we specify the values for its three
+components $v_1$, $v_2$, and $v_3$.
+
+A matrix $A \in \mathbb{R}^{m\times n}$ is a rectangular array of real
+numbers with $m$ rows and $n$ columns. A vector is a special type of
+matrix; we can think of a vector $\vec{v}\in \mathbb{R}^n$ either as a
+row vector ($1\times n$ matrix) or a column vector ($n \times 1$
+matrix). Because of this equivalence between vectors and matrices, there
+is no need for a special vector object in \texttt{SymPy}, and
+\texttt{Matrix} objects are used for vectors as well.
+
+This is how we define vectors and compute their properties:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}137}]:} \PY{n}{u} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{]}\PY{p}{)}  \PY{c}{# a row vector = 1x3 matrix}
+          \PY{n}{v} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]}\PY{p}{,}
+                      \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{,}       \PY{c}{# a col vector = 3x1 matrix }
+                      \PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}138}]:} \PY{n}{v}\PY{o}{.}\PY{n}{T}                    \PY{c}{# use the transpose operation to convert a col vec to a row vec}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}138}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}7 & 8 & 9\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}139}]:} \PY{n}{u}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}                   \PY{c}{# 0-based indexing for entries}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}139}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        4
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}140}]:} \PY{n}{u}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}               \PY{c}{# length of u}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}140}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \sqrt{77}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}141}]:} \PY{n}{uhat} \PY{o}{=} \PY{n}{u}\PY{o}{/}\PY{n}{u}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}      \PY{c}{# unit-length vec in same dir as u}
+          \PY{n}{uhat}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}141}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}\frac{4 \sqrt{77}}{77} & \frac{5 \sqrt{77}}{77} & \frac{6 \sqrt{77}}{77}\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}142}]:} \PY{n}{uhat}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}142}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        1
+        $}\end{equation*}
+
+    
+
+    \subsubsection{Dot product}\label{dot-product}
+
+    The dot product of the 3-vectors $\vec{u}$ and $\vec{v}$ can be defined
+two ways:
+
+\[
+  \vec{u}\cdot\vec{v}
+    \equiv 
+    \underbrace{u_xv_x+u_yv_y+u_zv_z}_{\textrm{algebraic def.}} 
+    \equiv 
+    \underbrace{\|\vec{u}\|\|\vec{v}\|\cos(\varphi)}_{\textrm{geometric def.}} 
+    \quad \in \mathbb{R},
+\]
+
+where $\varphi$ is the angle between the vectors $\vec{u}$ and
+$\vec{v}$. In \texttt{SymPy},
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}143}]:} \PY{n}{u} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[} \PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}
+          \PY{n}{v} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{o}{-}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+          \PY{n}{u}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{v}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}143}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        13
+        $}\end{equation*}
+
+    
+
+    We can combine the algebraic and geometric formulas for the dot product
+to obtain the cosine of the angle between the vectors
+
+\[
+    \cos(\varphi)
+        = \frac{ \vec{u}\cdot\vec{v} }{  \|\vec{u}\|\|\vec{v}\| }
+        = \frac{ u_xv_x+u_yv_y+u_zv_z  }{  \|\vec{u}\|\|\vec{v}\| },
+\]
+
+and use the \texttt{acos} function to find the angle measure:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}144}]:} \PY{n}{acos}\PY{p}{(}\PY{n}{u}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{v}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{u}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}\PY{o}{*}\PY{n}{v}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{evalf}\PY{p}{(}\PY{p}{)}  \PY{c}{# in radians = 52.76 degrees}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}144}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        0.921263115666387
+        $}\end{equation*}
+
+    
+
+    Just by looking at the coordinates of the vectors $\vec{u}$ and
+$\vec{v}$, it's difficult to determine their relative direction. Thanks
+to the dot product, however, we know the angle between the vectors is
+$52.76^\circ$, which means they \emph{kind of} point in the same
+direction. Vectors that are at an angle $\varphi=90^\circ$ are called
+\emph{orthogonal}, meaning at right angles with each other. The dot
+product of vectors for which $\varphi > 90^\circ$ is negative because
+they point \emph{mostly} in opposite directions.
+
+The notion of the ``angle between vectors'' applies more generally to
+vectors with any number of dimensions. The dot product for
+$n$-dimensional vectors is $\vec{u}\cdot\vec{v}=\sum_{i=1}^n u_iv_i$.
+This means we can talk about ``the angle between'' 1000-dimensional
+vectors. That's pretty crazy if you think about it---there is no way we
+could possibly ``visualize'' 1000-dimensional vectors, yet given two
+such vectors we can tell if they point mostly in the same direction, in
+perpendicular directions, or mostly in opposite directions.
+
+The dot product is a commutative operation
+$\vec{u}\cdot\vec{v} = \vec{v}\cdot\vec{u}$:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}145}]:} \PY{n}{u}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{v}\PY{p}{)} \PY{o}{==} \PY{n}{v}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{u}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}145}]:} True
+\end{Verbatim}
+        
+    \subsubsection{Projections}\label{projections}
+
+    Dot products are used for computing projections. Assume you're given two
+vectors $\vec{u}$ and $\vec{n}$ and you want to find the component of
+$\vec{u}$ that points in the $\vec{n}$ direction. The following formula
+based on the dot product will give you the answer:
+
+\[
+ \Pi_{\vec{n}}( \vec{u} ) \equiv \frac{  \vec{u} \cdot \vec{n}  }{ \| \vec{n} \|^2 } \vec{n}.
+\]
+
+This is how to implement this formula in \texttt{SymPy}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}146}]:} \PY{n}{u} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}
+          \PY{n}{n} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+          \PY{p}{(}\PY{n}{u}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{n}\PY{p}{)} \PY{o}{/} \PY{n}{n}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{n}{n}  \PY{c}{# projection of v in the n dir}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}146}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}5\\5\\5\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    In the case where the direction vector $\hat{n}$ is of unit length
+$\|\hat{n}\| = 1$, the projection formula simplifies to
+$\Pi_{\hat{n}}( \vec{u} ) \equiv (\vec{u}\cdot\hat{n})\hat{n}$.
+
+Consider now the plane $P$ defined by $(1,1,1)\cdot[(x,y,z)-(0,0,0)]=0$.
+A plane is a two dimensional subspace of $\mathbb{R}^3$. We can
+decompose any vector $\vec{u} \in \mathbb{R}^3$ into two parts
+$\vec{u}=\vec{v} + \vec{w}$ such that $\vec{v}$ lies inside the plane
+and $\vec{w}$ is perpendicular to the plane (parallel to
+$\vec{n}=(1,1,1)$).
+
+To obtain the perpendicular-to-$P$ component of $\vec{u}$, compute the
+projection of $\vec{u}$ in the direction $\vec{n}$:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}147}]:} \PY{n}{w} \PY{o}{=} \PY{p}{(}\PY{n}{u}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{n}\PY{p}{)} \PY{o}{/} \PY{n}{n}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{n}{n}
+          \PY{n}{w}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}147}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}5\\5\\5\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    To obtain the in-the-plane-$P$ component of $\vec{u}$, start with
+$\vec{u}$ and subtract the perpendicular-to-$P$ part:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}148}]:} \PY{n}{v} \PY{o}{=} \PY{n}{u} \PY{o}{-} \PY{p}{(}\PY{n}{u}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{o}{/}\PY{n}{n}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{n}{n}  \PY{c}{# same as u - w}
+          \PY{n}{v}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}148}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}-1\\0\\1\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    You should check on your own that $\vec{v}+\vec{w}=\vec{u}$ as claimed.
+
+    \subsubsection{Cross product}\label{cross-product}
+
+    The \emph{cross product}, denoted $\times$, takes two vectors as inputs
+and produces a vector as output. The cross products of individual basis
+elements are defined as follows:
+
+\[
+ \hat{\imath}\times\hat{\jmath} =\hat{k}, \qquad
+ \hat{\jmath}\times\hat{k} =\hat{\imath}, \qquad
+ \hat{k}\times \hat{\imath}= \hat{\jmath}.
+\]
+
+Here is how to compute the cross product of two vectors in
+\texttt{SymPy}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}149}]:} \PY{n}{u} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[} \PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}
+          \PY{n}{v} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{o}{-}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+          \PY{n}{u}\PY{o}{.}\PY{n}{cross}\PY{p}{(}\PY{n}{v}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}149}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}4\\-14\\9\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    The vector $\vec{u}\times \vec{v}$ is orthogonal to both $\vec{u}$ and
+$\vec{v}$. The norm of the cross product $\|\vec{u}\times \vec{v}\|$ is
+proportional to the lengths of the vectors and the sine of the angle
+between them:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}150}]:} \PY{p}{(}\PY{n}{u}\PY{o}{.}\PY{n}{cross}\PY{p}{(}\PY{n}{v}\PY{p}{)}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{u}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}\PY{o}{*}\PY{n}{v}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{n}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}150}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        0.796366206088088
+        $}\end{equation*}
+
+    
+
+    The name ``cross product'' is well-suited for this operation since it is
+calculated by ``cross-multiplying'' the coefficients of the vectors:
+
+\[
+   \vec{u}\times\vec{v}=
+   \left( 
+     u_yv_z-u_zv_y, \ u_zv_x-u_xv_z, \ u_xv_y-u_yv_x 
+    \right).
+\]
+
+By defining individual symbols for the entries of two vectors, we can
+make \texttt{SymPy} show us the cross-product formula:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}151}]:} \PY{n}{u1}\PY{p}{,}\PY{n}{u2}\PY{p}{,}\PY{n}{u3} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{u1:4}\PY{l+s}{'}\PY{p}{)}
+          \PY{n}{v1}\PY{p}{,}\PY{n}{v2}\PY{p}{,}\PY{n}{v3} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{v1:4}\PY{l+s}{'}\PY{p}{)}
+          \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{n}{u1}\PY{p}{,}\PY{n}{u2}\PY{p}{,}\PY{n}{u3}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{cross}\PY{p}{(}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{n}{v1}\PY{p}{,}\PY{n}{v2}\PY{p}{,}\PY{n}{v3}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}151}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}u_{2} v_{3} - u_{3} v_{2}\\- u_{1} v_{3} + u_{3} v_{1}\\u_{1} v_{2} - u_{2} v_{1}\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    The dot product is anti-commutative
+$\vec{u}\times\vec{v} = -\vec{v}\times\vec{u}$:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}152}]:} \PY{n}{u}\PY{o}{.}\PY{n}{cross}\PY{p}{(}\PY{n}{v}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}152}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}4\\-14\\9\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}153}]:} \PY{n}{v}\PY{o}{.}\PY{n}{cross}\PY{p}{(}\PY{n}{u}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}153}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}-4\\14\\-9\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    The product of two numbers and the dot product of two vectors are
+commutative operations. The cross product, however, is not commutative:
+$\vec{u}\times\vec{v} \neq \vec{v}\times\vec{u}$.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

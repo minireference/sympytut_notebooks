@@ -1,0 +1,692 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Mechanics}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\def\PY@tok@gd{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\def\PY@tok@gu{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\def\PY@tok@gt{\def\PY@tc##1{\textcolor[rgb]{0.00,0.25,0.82}{##1}}}
+\def\PY@tok@gs{\let\PY@bf=\textbf}
+\def\PY@tok@gr{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\def\PY@tok@cm{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@vg{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@m{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@mh{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@go{\def\PY@tc##1{\textcolor[rgb]{0.50,0.50,0.50}{##1}}}
+\def\PY@tok@ge{\let\PY@it=\textit}
+\def\PY@tok@vc{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@il{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@cs{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@cp{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\def\PY@tok@gi{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\def\PY@tok@gh{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\def\PY@tok@ni{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\def\PY@tok@nl{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\def\PY@tok@nn{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@no{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\def\PY@tok@na{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\def\PY@tok@nb{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@nc{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@nd{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\def\PY@tok@ne{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\def\PY@tok@nf{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\def\PY@tok@si{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\def\PY@tok@s2{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@vi{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@nt{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@nv{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@s1{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sh{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sc{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@sx{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@bp{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@c1{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@kc{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@c{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\def\PY@tok@mf{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@err{\def\PY@bc##1{\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{##1}}}
+\def\PY@tok@kd{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@ss{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\def\PY@tok@sr{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\def\PY@tok@mo{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@kn{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@mi{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@gp{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\def\PY@tok@o{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\def\PY@tok@kr{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@s{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@kp{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@w{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\def\PY@tok@kt{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\def\PY@tok@ow{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\def\PY@tok@sb{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\def\PY@tok@k{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\def\PY@tok@se{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\def\PY@tok@sd{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \subsection{Mechanics}\label{mechanics}
+
+    The module called
+\href{http://pyvideo.org/video/2653/dynamics-and-control-with-python}{\texttt{sympy.physics.mechanics}}
+contains elaborate tools for describing mechanical systems, manipulating
+reference frames, forces, and torques. These specialized functions are
+not necessary for a first-year mechanics course. The basic
+\texttt{SymPy} functions like \texttt{solve}, and the vector operations
+you learned in the previous sections are powerful enough for basic
+Newtonian mechanics.
+
+    \subsubsection{Dynamics}\label{dynamics}
+
+    The net force acting on an object is the sum of all the external forces
+acting on it $\vec{F}_{\textrm{net}} = \sum \vec{F}$. Since forces are
+vectors, we need to use vector addition to compute the net force.
+
+Compute $\vec{F}_{\textrm{net}}=\vec{F}_1 + \vec{F}_2$, where
+$\vec{F}_1=4\hat{\imath}[\mathrm{N}]$ and
+$\vec{F}_2 = 5\angle 30^\circ[\mathrm{N}]$:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}154}]:} \PY{n}{F\PYZus{}1} \PY{o}{=}  \PY{n}{Matrix}\PY{p}{(} \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]} \PY{p}{)} 
+          \PY{n}{F\PYZus{}2} \PY{o}{=}  \PY{n}{Matrix}\PY{p}{(} \PY{p}{[}\PY{l+m+mi}{5}\PY{o}{*}\PY{n}{cos}\PY{p}{(}\PY{l+m+mi}{30}\PY{o}{*}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{180}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{5}\PY{o}{*}\PY{n}{sin}\PY{p}{(}\PY{l+m+mi}{30}\PY{o}{*}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{180}\PY{p}{)} \PY{p}{]} \PY{p}{)}
+          \PY{n}{F\PYZus{}net} \PY{o}{=} \PY{n}{F\PYZus{}1} \PY{o}{+} \PY{n}{F\PYZus{}2}
+          \PY{n}{F\PYZus{}net}                                    \PY{c}{# in Newtons}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}154}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}4 + \frac{5 \sqrt{3}}{2}\\\frac{5}{2}\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}155}]:} \PY{n}{F\PYZus{}net}\PY{o}{.}\PY{n}{evalf}\PY{p}{(}\PY{p}{)}                            \PY{c}{# in Newtons}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}155}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}8.33012701892219\\2.5\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    To express the answer in length-and-direction notation, use
+\texttt{norm} to find the length of $\vec{F}_{\textrm{net}}$ and
+\texttt{atan2} (The function \texttt{atan2(y,x)} computes the correct
+direction for all vectors $(x,y)$, unlike \texttt{atan(y/x)} which
+requires corrections for angles in the range
+$[\frac{\pi}{2}, \frac{3\pi}{2}]$.) to find its direction:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}156}]:} \PY{n}{F\PYZus{}net}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{evalf}\PY{p}{(}\PY{p}{)}                     \PY{c}{# |F\PYZus{}net| in [N]}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}156}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        8.69718438067042
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}157}]:} \PY{p}{(}\PY{n}{atan2}\PY{p}{(} \PY{n}{F\PYZus{}net}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{n}{F\PYZus{}net}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{p}{)}\PY{o}{*}\PY{l+m+mi}{180}\PY{o}{/}\PY{n}{pi}\PY{p}{)}\PY{o}{.}\PY{n}{n}\PY{p}{(}\PY{p}{)}  \PY{c}{# angle in degrees}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}157}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        16.70531380601
+        $}\end{equation*}
+
+    
+
+    The net force on the object is
+$\vec{F}_{\textrm{net}}= 8.697\angle 16.7^\circ${[}N{]}.
+
+    \subsubsection{Kinematics}\label{kinematics}
+
+    Let $x(t)$ denote the position of an object, $v(t)$ denote its velocity,
+and $a(t)$ denote its acceleration. Together $x(t)$, $v(t)$, and $a(t)$
+are known as the \emph{equations of motion} of the object.
+
+The equations of motion are related by the derivative operation:
+
+\[
+  a(t) \overset{\frac{d}{dt} }{\longleftarrow} v(t) \overset{\frac{d}{dt} }{\longleftarrow} x(t).
+\]
+
+Assume we know the initial position $x_i\equiv x(0)$ and the initial
+velocity $v_i\equiv v(0)$ of the object and we want to find $x(t)$ for
+all later times. We can do this starting from the dynamics of the
+problem---the forces acting on the object.
+
+Newton's second law $\vec{F}_{\textrm{net}} = m\vec{a}$ states that a
+net force $\vec{F}_{\textrm{net}}$ applied on an object of mass $m$
+produces acceleration $\vec{a}$. Thus, we can obtain an objects
+acceleration if we know the net force acting on it. Starting from the
+knowledge of $a(t)$, we can obtain $v(t)$ by integrating then find
+$x(t)$ by integrating $v(t)$:
+
+\[
+a(t) \ \ \ \overset{v_i+ \int\!dt }{\longrightarrow} \ \ \ v(t) \ \ \ \overset{x_i+ \int\!dt }{\longrightarrow} \ \ \ x(t).
+\]
+
+The reasoning follows from the fundamental theorem of calculus: if
+$a(t)$ represents the change in $v(t)$, then the total of $a(t)$
+accumulated between $t=t_1$ and $t=t_2$ is equal to the total change in
+$v(t)$ between these times: $\Delta v = v(t_2) - v(t_1)$. Similarly, the
+integral of $v(t)$ from $t=0$ until $t=\tau$ is equal to
+$x(\tau) - x(0)$.
+
+    \subsubsection{Uniform acceleration motion
+(UAM)}\label{uniform-acceleration-motion-uam}
+
+    Let's analyze the case where the net force on the object is constant. A
+constant force causes a constant acceleration
+$a = \frac{F}{m} = \textrm{constant}$. If the acceleration function is
+constant over time $a(t)=a$. We find $v(t)$ and $x(t)$ as follows:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}158}]:} \PY{n}{t}\PY{p}{,} \PY{n}{a}\PY{p}{,} \PY{n}{v\PYZus{}i}\PY{p}{,} \PY{n}{x\PYZus{}i} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{t a v\PYZus{}i x\PYZus{}i}\PY{l+s}{'}\PY{p}{)}
+          \PY{n}{v} \PY{o}{=} \PY{n}{v\PYZus{}i} \PY{o}{+} \PY{n}{integrate}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{p}{(}\PY{n}{t}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,}\PY{n}{t}\PY{p}{)} \PY{p}{)}
+          \PY{n}{v}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}158}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        a t + v_{i}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}159}]:} \PY{n}{x} \PY{o}{=} \PY{n}{x\PYZus{}i} \PY{o}{+} \PY{n}{integrate}\PY{p}{(}\PY{n}{v}\PY{p}{,} \PY{p}{(}\PY{n}{t}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,}\PY{n}{t}\PY{p}{)} \PY{p}{)}
+          \PY{n}{x}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}159}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{a t^{2}}{2} + t v_{i} + x_{i}
+        $}\end{equation*}
+
+    
+
+    You may remember these equations from your high school physics class.
+They are the \emph{uniform accelerated motion} (UAM) equations:
+
+\begin{align*}
+ a(t) &= a,                                  \\ 
+ v(t) &= v_i  + at,                          \\[-2mm] 
+ x(t) &= x_i + v_it + \frac{1}{2}at^2.
+\end{align*}
+
+In high school, you probably had to memorize these equations. Now you
+know how to derive them yourself starting from first principles.
+
+For the sake of completeness, we'll now derive the fourth UAM equation,
+which relates the object's final velocity to the initial velocity, the
+displacement, and the acceleration, without reference to time:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}160}]:} \PY{p}{(}\PY{n}{v}\PY{o}{*}\PY{n}{v}\PY{p}{)}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}160}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        a^{2} t^{2} + 2 a t v_{i} + v_{i}^{2}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}161}]:} \PY{p}{(}\PY{p}{(}\PY{n}{v}\PY{o}{*}\PY{n}{v}\PY{p}{)}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)} \PY{o}{-} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{a}\PY{o}{*}\PY{n}{x}\PY{p}{)}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}161}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        - 2 a x_{i} + v_{i}^{2}
+        $}\end{equation*}
+
+    
+
+    The above calculation shows $v_f^2 - 2ax_f = -2ax_i + v_i^2$. After
+moving the term $2ax_f$ to the other side of the equation, we obtain
+
+\begin{align*}
+ (v(t))^2 \ = \ v_f^2 =  v_i^2  + 2a\Delta x \ = \  v_i^2  + 2a(x_f-x_i).
+\end{align*}
+
+The fourth equation is important for practical purposes because it
+allows us to solve physics problems in a time-less manner.
+
+    \paragraph{Example}\label{example}
+
+    Find the position function of an object at time $t=3[\mathrm{s}]$, if it
+starts from $x_i=20[\mathrm{m}]$ with $v_i=10[\mathrm{m/s}]$ and
+undergoes a constant acceleration of $a=5[\mathrm{m/s^2}]$. What is the
+object's velocity at $t=3[\mathrm{s}]$?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}162}]:} \PY{n}{x\PYZus{}i} \PY{o}{=} \PY{l+m+mi}{20}  \PY{c}{# initial position}
+          \PY{n}{v\PYZus{}i} \PY{o}{=} \PY{l+m+mi}{10}  \PY{c}{# initial velocity}
+          \PY{n}{a}   \PY{o}{=} \PY{l+m+mi}{5}   \PY{c}{# acceleration (constant during motion)}
+          \PY{n}{x} \PY{o}{=} \PY{n}{x\PYZus{}i} \PY{o}{+} \PY{n}{integrate}\PY{p}{(} \PY{n}{v\PYZus{}i}\PY{o}{+}\PY{n}{integrate}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{t}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{t}\PY{p}{)} \PY{p}{)}   
+          \PY{n}{x}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}162}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{5 t^{2}}{2} + 10 t + 20
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}163}]:} \PY{n}{x}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{p}{\PYZob{}}\PY{n}{t}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{o}{.}\PY{n}{n}\PY{p}{(}\PY{p}{)}          \PY{c}{# x(3) in [m]}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}163}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        72.5
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}164}]:} \PY{n}{diff}\PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{n}{t}\PY{p}{)}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{p}{\PYZob{}}\PY{n}{t}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{o}{.}\PY{n}{n}\PY{p}{(}\PY{p}{)}  \PY{c}{# v(3) in [m/s]}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}164}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        25.0
+        $}\end{equation*}
+
+    
+
+    If you think about it, physics knowledge combined with computer skills
+is like a superpower!
+
+    \subsubsection{General equations of
+motion}\label{general-equations-of-motion}
+
+    The procedure
+$a(t) \ \overset{v_i+ \int\!dt }{\longrightarrow} \ v(t) \ \overset{x_i+ \int\!dt }{\longrightarrow} \ x(t)$
+can be used to obtain the position function $x(t)$ even when the
+acceleration is not constant. Suppose the acceleration of an object is
+$a(t)=\sqrt{k t}$; what is its $x(t)$?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}165}]:} \PY{n}{t}\PY{p}{,} \PY{n}{v\PYZus{}i}\PY{p}{,} \PY{n}{x\PYZus{}i}\PY{p}{,} \PY{n}{k} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{t v\PYZus{}i x\PYZus{}i k}\PY{l+s}{'}\PY{p}{)}
+          \PY{n}{a} \PY{o}{=} \PY{n}{sqrt}\PY{p}{(}\PY{n}{k}\PY{o}{*}\PY{n}{t}\PY{p}{)}
+          \PY{n}{x} \PY{o}{=} \PY{n}{x\PYZus{}i} \PY{o}{+} \PY{n}{integrate}\PY{p}{(} \PY{n}{v\PYZus{}i}\PY{o}{+}\PY{n}{integrate}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{t}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{n}{t}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,}\PY{n}{t}\PY{p}{)} \PY{p}{)}
+          \PY{n}{x}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}165}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        t v_{i} + x_{i} + \frac{4 \left(k t\right)^{\frac{5}{2}}}{15 k^{2}}
+        $}\end{equation*}
+
+    
+
+    \subsubsection{Potential energy}\label{potential-energy}
+
+    Instead of working with the kinematic equations of motion $x(t)$,
+$v(t)$, and $a(t)$ which depend on time, we can solve physics problems
+using \emph{energy} calculations. A key connection between the world of
+forces and the world of energy is the concept of \emph{potential
+energy}. If you move an object against a conservative force (think
+raising a ball in the air against the force of gravity), you can think
+of the work you do agains the force as being stored in the potential
+energy of the object.
+
+For each force $\vec{F}(x)$ there is a corresponding potential energy
+$U_F(x)$. The change in potential energy associated with the force
+$\vec{F}(x)$ and displacement $\vec{d}$ is defined as the negative of
+the work done by the force during the displacement:
+$U_F(x) = - W = - \int_{\vec{d}} \vec{F}(x)\cdot d\vec{x}$.
+
+The potential energies associated with gravity
+$\vec{F}_g = -mg\hat{\jmath}$ and the force of a spring
+$\vec{F}_s = -k\vec{x}$ are calculated as follows:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}166}]:} \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{x y}\PY{l+s}{'}\PY{p}{)}
+          \PY{n}{m}\PY{p}{,} \PY{n}{g}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{h} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{m g k h}\PY{l+s}{'}\PY{p}{)}
+          \PY{n}{F\PYZus{}g} \PY{o}{=} \PY{o}{-}\PY{n}{m}\PY{o}{*}\PY{n}{g}  \PY{c}{# Force of gravity on mass m }
+          \PY{n}{U\PYZus{}g} \PY{o}{=} \PY{o}{-} \PY{n}{integrate}\PY{p}{(} \PY{n}{F\PYZus{}g}\PY{p}{,} \PY{p}{(}\PY{n}{y}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{h}\PY{p}{)} \PY{p}{)}
+          \PY{n}{U\PYZus{}g}         \PY{c}{# Grav. potential energy}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}166}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        g h m
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}167}]:} \PY{n}{F\PYZus{}s} \PY{o}{=} \PY{o}{-}\PY{n}{k}\PY{o}{*}\PY{n}{x}  \PY{c}{# Spring force for displacement x }
+          \PY{n}{U\PYZus{}s} \PY{o}{=} \PY{o}{-} \PY{n}{integrate}\PY{p}{(} \PY{n}{F\PYZus{}s}\PY{p}{,} \PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{x}\PY{p}{)} \PY{p}{)}
+          \PY{n}{U\PYZus{}s}         \PY{c}{# Spring potential energy}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}167}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \frac{k x^{2}}{2}
+        $}\end{equation*}
+
+    
+
+    Note the negative sign in the formula defining the potential energy.
+This negative is canceled by the negative sign of the dot product
+$\vec{F}\cdot d\vec{x}$: when the force acts in the direction opposite
+to the displacement, the work done by the force is negative.
+
+    \subsubsection{Simple harmonic motion}\label{simple-harmonic-motion}
+
+    The force exerted by a spring is given by the formula $F=-kx$. If the
+only force acting on a mass $m$ is the force of a spring, we can use
+Newton's second law to obtain the following equation:
+
+\[
+  F=ma  
+  \quad \Rightarrow \quad
+  -kx = ma   
+  \quad \Rightarrow \quad
+  -kx(t) = m\frac{d^2}{dt^2}\Big[x(t)\Big].
+\]
+
+The motion of a mass-spring system is described by the
+\emph{differential equation} $\frac{d^2}{dt^2}x(t) + \omega^2 x(t)=0$,
+where the constant $\omega = \sqrt{\frac{k}{m}}$ is called the angular
+frequency. We can find the position function $x(t)$ using the
+\texttt{dsolve} method:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}168}]:} \PY{n}{t} \PY{o}{=} \PY{n}{Symbol}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{t}\PY{l+s}{'}\PY{p}{)}                 \PY{c}{# time t}
+          \PY{n}{x} \PY{o}{=} \PY{n}{Function}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{x}\PY{l+s}{'}\PY{p}{)}               \PY{c}{# position function x(t)}
+          \PY{n}{w} \PY{o}{=} \PY{n}{Symbol}\PY{p}{(}\PY{l+s}{'}\PY{l+s}{w}\PY{l+s}{'}\PY{p}{,} \PY{n}{positive}\PY{o}{=}\PY{k}{True}\PY{p}{)}  \PY{c}{# angular frequency w}
+          \PY{n}{sol} \PY{o}{=} \PY{n}{dsolve}\PY{p}{(} \PY{n}{diff}\PY{p}{(}\PY{n}{x}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{,}\PY{n}{t}\PY{p}{,}\PY{n}{t}\PY{p}{)} \PY{o}{+} \PY{n}{w}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{x}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{,} \PY{n}{x}\PY{p}{(}\PY{n}{t}\PY{p}{)} \PY{p}{)}
+          \PY{n}{sol}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}168}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        x{\left (t \right )} = C_{1} \sin{\left (t w \right )} + C_{2} \cos{\left (t w \right )}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}169}]:} \PY{n}{x} \PY{o}{=} \PY{n}{sol}\PY{o}{.}\PY{n}{rhs}           
+          \PY{n}{x}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}169}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        C_{1} \sin{\left (t w \right )} + C_{2} \cos{\left (t w \right )}
+        $}\end{equation*}
+
+    
+
+    Note the solution $x(t)=C_1\sin(\omega t)+C_2 \cos(\omega t)$ is
+equivalent to $x(t) = A\cos(\omega t + \phi)$, which is more commonly
+used to describe simple harmonic motion. We can use the \texttt{expand}
+function with the argument \texttt{trig=True} to convince ourselves of
+this equivalence:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}170}]:} \PY{n}{A}\PY{p}{,} \PY{n}{phi} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{"}\PY{l+s}{A phi}\PY{l+s}{"}\PY{p}{)}
+          \PY{p}{(}\PY{n}{A}\PY{o}{*}\PY{n}{cos}\PY{p}{(}\PY{n}{w}\PY{o}{*}\PY{n}{t} \PY{o}{-} \PY{n}{phi}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{n}{trig}\PY{o}{=}\PY{k}{True}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}170}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        A \sin{\left (\phi \right )} \sin{\left (t w \right )} + A \cos{\left (\phi \right )} \cos{\left (t w \right )}
+        $}\end{equation*}
+
+    
+
+    If we define $C_1=A\sin(\phi)$ and $C_2=A\cos(\phi)$, we obtain the form
+$x(t)=C_1\sin(\omega t)+C_2 \cos(\omega t)$ that \texttt{SymPy} found.
+
+    \subsubsection{Conservation of energy}\label{conservation-of-energy}
+
+    We can verify that the total energy of the mass-spring system is
+conserved by showing $E_T(t) = U_s(t) + K(t) = \textrm{constant}$:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}171}]:} \PY{n}{x} \PY{o}{=} \PY{n}{sol}\PY{o}{.}\PY{n}{rhs}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{"}\PY{l+s}{C1}\PY{l+s}{"}\PY{p}{:}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+s}{"}\PY{l+s}{C2}\PY{l+s}{"}\PY{p}{:}\PY{n}{A}\PY{p}{\PYZcb{}}\PY{p}{)} 
+          \PY{n}{x}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}171}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        A \cos{\left (t w \right )}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}172}]:} \PY{n}{v} \PY{o}{=} \PY{n}{diff}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{t}\PY{p}{)}
+          \PY{n}{v}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}172}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        - A w \sin{\left (t w \right )}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}173}]:} \PY{n}{E\PYZus{}T} \PY{o}{=} \PY{p}{(}\PY{l+m+mf}{0.5}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{l+m+mf}{0.5}\PY{o}{*}\PY{n}{m}\PY{o}{*}\PY{n}{v}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}
+          \PY{n}{E\PYZus{}T}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}173}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        0.5 A^{2} \left(k \cos^{2}{\left (t w \right )} + m w^{2} \sin^{2}{\left (t w \right )}\right)
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}174}]:} \PY{n}{E\PYZus{}T}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{p}{\PYZob{}}\PY{n}{k}\PY{p}{:}\PY{n}{m}\PY{o}{*}\PY{n}{w}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}     \PY{c}{# = K\PYZus{}max}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}174}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        0.5 A^{2} m w^{2}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}175}]:} \PY{n}{E\PYZus{}T}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{p}{\PYZob{}}\PY{n}{w}\PY{p}{:}\PY{n}{sqrt}\PY{p}{(}\PY{n}{k}\PY{o}{/}\PY{n}{m}\PY{p}{)}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}  \PY{c}{# = U\PYZus{}max}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}175}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        0.5 A^{2} k
+        $}\end{equation*}
+
+    
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
