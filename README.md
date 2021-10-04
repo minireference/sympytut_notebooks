@@ -9,6 +9,7 @@ calculus, mechanics, and linear algebra.
 
 Click the Binder button below to launch an ephemeral JupyterLab server where you
 can play with the notebooks.
+
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/minireference/sympytut_notebooks/tree/master/notebooks/HEAD)
 
 Start with `Intro.ipynb` or jumpt directly to the topics you're interested in.
